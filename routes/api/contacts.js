@@ -16,7 +16,7 @@ const schema = Joi.object({
       tlds: { allow: ["com", "net"] },
     })
     .required(),
-  phone: Joi.number().min(3).max(15).required(),
+  phone: Joi.string().alphanum().min(3).max(15).required(),
 });
 
 function readContactsFromFile() {

@@ -5,6 +5,7 @@ const cors = require("cors");
 const contactsRouter = require("./routes/api/contacts");
 
 const app = express();
+app.use(express.urlencoded({ extended: false }));
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 // app.get("/", (req, res) => {
