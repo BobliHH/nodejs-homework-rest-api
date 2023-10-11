@@ -3,7 +3,7 @@ const Joi = require("joi");
 
 const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
-const fs = require("fs/promises");
+const fs = require("fs");
 const path = require("path");
 
 const contactsPath = path.join(__dirname, "../../models/contacts.json");
@@ -16,7 +16,7 @@ const schema = Joi.object({
       tlds: { allow: ["com", "net"] },
     })
     .required(),
-  phone: Joi.number().min(3).max(15).required(),
+  phone: Joi.string().alphanum().min(3).max(15).required(),
 });
 
 function readContactsFromFile() {
